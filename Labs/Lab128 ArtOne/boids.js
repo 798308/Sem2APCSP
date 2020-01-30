@@ -14,11 +14,10 @@ class Boid{
   }
   render(){
     for(var i = 0; i < boids.length; i++){
-      var disToBoids = this.loc.dist(boids[i]);
+      var disToBoids = this.loc.dist(boids[i].loc);
       if (disToBoids < 100){
-        fill(this.clr);
+        stroke(this.clr);
         line(this.loc.x, this.loc.y, boids[i].loc.x, boids[i].loc.y);
-        console.log("ok");
       }
     }
   }

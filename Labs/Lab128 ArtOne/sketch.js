@@ -12,7 +12,8 @@ function setup(){
 }
 
 //  The draw function is called @ 30 fps
-function draw() {
+function draw(){
+  background(5,5,5);
   runBoids();
 }
 function loadBoids(){
@@ -21,7 +22,7 @@ function loadBoids(){
   }
 }
 function runBoids(){
-  for(var i = 0; i < boids.length; i++){
+  for(var i = 0; i < boidNum; i++){
     boids[i].run();
   }
 }
