@@ -3,7 +3,7 @@
 //  This is a comment
 //  The setup function function is called once when your program begins
 var boids = [];
-var boidNum = 10;
+var boidNum = 50;
 function setup(){
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
