@@ -11,7 +11,7 @@ function setup(){
   background(5, 5, 5);
   loadBoids();
 }
-
+//done
 //  The draw function is called @ 30 fps
 function draw(){
   frameRate(1);
