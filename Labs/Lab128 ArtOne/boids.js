@@ -3,9 +3,9 @@
 class Boid{
   constructor(){
     this.loc = createVector(random(0,800), random(0,800));
-    this.vel = createVector(random(1,8),random(1,8));
+    this.vel = createVector(random(-8,8),random(-8,8));
     this.acc = createVector(0,0);
-    this.clr = color(random(0,255),random(0,255),random(0,255));
+    this.clr = color(random(0,255),random(0,255), random(0,255), random(0,255));
   }
   run(){
     this.render();
@@ -15,7 +15,7 @@ class Boid{
   render(){
     for(var i = 0; i < boids.length; i++){
       var disToBoids = this.loc.dist(boids[i].loc);
-      if (disToBoids < 300){
+      if (disToBoids < 200){
         stroke(this.clr);
         line(this.loc.x, this.loc.y, boids[i].loc.x, boids[i].loc.y);
       }
