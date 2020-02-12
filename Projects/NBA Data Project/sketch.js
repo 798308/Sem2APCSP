@@ -12,10 +12,10 @@ function setup(){
   fill(200, 30, 150);
   loadStats();
   loadPlayerStats("Michael Jordan");
-  aggregateStats("Michael Jordan", 10);
   console.log(statsArray[10]);
   console.log(aggregateStats("Michael Jordan", 10));
-  console.log(aggregateStats("Michael Jordan", 4));
+  loadPlayerStats("Kobe Bryant");
+  console.log(aggregateStats("Kobe Bryant", 10));
 }
 
 //  The draw function is called @ 30 fps
@@ -34,6 +34,7 @@ function loadPlayerStats(player){
 function aggregateStats(player, stat){
   var results = [];
   for(var i = 0; i < statsArray.length; i++){
+    //need to find a way to traverse array inside array
     results.push(statsArray[i].get(stat));
   }
   return results;
