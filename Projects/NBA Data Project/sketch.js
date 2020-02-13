@@ -5,23 +5,49 @@
 //  The setup function function is called once when your program begins
 var statsArray =[];
 var stats;
+var season = 0;
 function setup(){
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
-  background(5, 5, 5);
+  background(50, 50, 50);
   fill(200, 30, 150);
   loadStats();
-  loadPlayerStats("Michael Jordan");
-  console.log(statsArray[10]);
-  console.log(aggregateStats("Michael Jordan", 10));
-  loadPlayerStats("Kobe Bryant");
-  console.log(aggregateStats("Kobe Bryant", 10));
+  //loadPlayerStats("Michael Jordan");
+  //console.log(statsArray[10]);
+  //console.log(aggregateStats("Michael Jordan", 10));
+  //console.log(aggregateStats("Michael Jordan", 4));
+  //loadPlayerStats("Kobe Bryant");
+  //console.log(aggregateStats("Kobe Bryant", 10));
+  //console.log(float(statsArray[season].get(10)));
 }
 
 //  The draw function is called @ 30 fps
 function draw(){
   createPlayerSelectionList();
   getSelectedPlayers();
+  drawGraph();
+  makePoints("Michael Jordan", 10, 4, 0);
+}
+//draws the graph
+function drawGraph(){
+  fill(100, 150, 255);
+  rect(100, 300, 600, 500);
+  strokeWeight(5);
+  line(150, 350, 150, 750);
+  line(150, 750, 680, 750);
+  fill(5,5,5);
+  textSize(10);
+  textStyle(BOLD);
+  textFont("Georgia");
+  text("Shot %", 110, 550);
+  text("Player Age", 375, 765);
+}
+function makePoints(player, stat1, stat2, season){
+  season = int(season);
+  loadPlayerStats(player);
+  fill(5,5,5);
+  ellipse(float(statsArray[0].get(10))* 200, float(statsArray[0].get(4))* 200, 100, 100);
+
 }
 //chooses the row of the selected player and shows the stats of this player
 function loadPlayerStats(player){
@@ -35,7 +61,7 @@ function aggregateStats(player, stat){
   var results = [];
   for(var i = 0; i < statsArray.length; i++){
     //need to find a way to traverse array inside array
-    results.push(statsArray[i].get(stat));
+    results.push(float(statsArray[i].get(stat)));
   }
   return results;
 }
