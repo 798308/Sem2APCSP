@@ -3,15 +3,17 @@
 //  stats are here: https://www.kaggle.com/drgilermo/nba-players-stats#Seasons_Stats.csv
 //  This is a comment
 //  The setup function function is called once when your program begins
-var statsArray =[];
+var statsArray = [];
+var points = [];
 var stats;
-var season = 0;
 function setup(){
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(50, 50, 50);
   fill(200, 30, 150);
+  drawGraph();
   loadStats();
+  makePoints("Michael Jordan", 10, 4);
   //loadPlayerStats("Michael Jordan");
   //console.log(statsArray[10]);
   //console.log(aggregateStats("Michael Jordan", 10));
@@ -23,10 +25,9 @@ function setup(){
 
 //  The draw function is called @ 30 fps
 function draw(){
-  createPlayerSelectionList();
-  getSelectedPlayers();
-  drawGraph();
-  makePoints("Michael Jordan", 10, 4, 0);
+  //createPlayerSelectionList();
+  //getSelectedPlayers();
+  runPoints();
 }
 //draws the graph
 function drawGraph(){
@@ -42,12 +43,18 @@ function drawGraph(){
   text("Shot %", 110, 550);
   text("Player Age", 375, 765);
 }
-function makePoints(player, stat1, stat2, season){
-  season = int(season);
+//draws points
+function runPoints(){
+  for(var i = 0; i < statsArray.length; i++){
+    points[i].run();
+  }
+}
+//loads the points
+function makePoints(player, stat1, stat2){
   loadPlayerStats(player);
-  fill(5,5,5);
-  ellipse(float(statsArray[0].get(10))* 200, float(statsArray[0].get(4))* 200, 100, 100);
-
+  for(var i = 0; i < statsArray.length; i++){
+    points[i] = new Point(float(statsArray[i].get(stat1)) * 1000, int(statsArray[i].get(stat2)) * 20);
+  }
 }
 //chooses the row of the selected player and shows the stats of this player
 function loadPlayerStats(player){
@@ -66,13 +73,16 @@ function aggregateStats(player, stat){
   return results;
 }
 //creates a UI that allows the user to select which player's stats they want to look at
+/*
 function createPlayerSelectionList(){
   playerSel = createSelect(true);
   playerSel.position((windowWidth-width)/2 + 270, (windowHeight-height)/2 + 40);
 }
+
 function getSelectedPlayers(){
   var chosenPlayers = [];
   for(var i = 0; i < playerSel.elt.selectedOptions.length; i++){
     chosenPlayers.push(playerSel.elt.selectedOptions[i].value);
   }
 }
+*/
