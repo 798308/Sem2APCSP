@@ -14,6 +14,7 @@ function setup(){
   drawGraph();
   loadStats();
   makePoints("Michael Jordan", 10, 4);
+  //add a UI so that the user can choose a player
   //loadPlayerStats("Michael Jordan");
   //console.log(statsArray[10]);
   //console.log(aggregateStats("Michael Jordan", 10));
