@@ -43,6 +43,8 @@ function drawGraph(){
   textFont("Georgia");
   text("Shot %", 110, 550);
   text("Player Age", 375, 765);
+  textSize(5);
+  text("(The shot percentages are inverted, I'm sorry)", 350, 770);
 }
 //draws points
 function runPoints(){
