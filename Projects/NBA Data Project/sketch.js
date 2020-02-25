@@ -6,7 +6,6 @@
 var statsArray = [];
 var points = [];
 var stats;
-//alrighty then
 function setup(){
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
