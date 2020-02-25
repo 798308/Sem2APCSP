@@ -6,6 +6,7 @@
 var statsArray = [];
 var points = [];
 var stats;
+var player = "Michael Jordan";
 function setup(){
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
@@ -13,7 +14,7 @@ function setup(){
   fill(200, 30, 150);
   drawGraph();
   loadStats();
-  makePoints("Michael Jordan", 10, 4);
+  makePoints(player, 10, 4);
   //add a UI so that the user can choose a player
   //loadPlayerStats("Michael Jordan");
   //console.log(statsArray[10]);
@@ -39,7 +40,6 @@ function drawGraph(){
   line(150, 750, 680, 750);
   fill(5,5,5);
   textSize(10);
-  textStyle(BOLD);
   textFont("Georgia");
   text("Shot %", 110, 550);
   text("Player Age", 375, 765);
@@ -53,8 +53,9 @@ function runPoints(){
 //loads the points
 function makePoints(player, stat1, stat2){
   loadPlayerStats(player);
+  textStyle(NORMAL);
   for(var i = 0; i < statsArray.length; i++){
-    points[i] = new Point(float(statsArray[i].get(stat1)) * 1000, int(statsArray[i].get(stat2)) * 20);
+    points[i] = new Point((int(statsArray[i].get(stat2)) * 20) - 200, float(statsArray[i].get(stat1) * 2500) - 800);
   }
 }
 //chooses the row of the selected player and shows the stats of this player
