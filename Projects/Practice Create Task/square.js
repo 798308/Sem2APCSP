@@ -1,11 +1,10 @@
 class Square{
-  constructor(x, y, dx, dy, id){
+  constructor(x, y, dx, dy){
     this.loc = createVector(x, y);
     this.vel = createVector(dx, dy);
     this.clr = color(random(225), random(225), random(225));
     this.angle = 0;
     this.acc = createVector(0,0.1);
-    this.id = id;
   }
 
   run(){

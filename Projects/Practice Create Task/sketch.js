@@ -20,11 +20,11 @@ function draw() {
 }
 function loadObjects(n){
   for (var i = 0; i < n; i++){
-    ships[i] = new Ship(random(width), random(height), random(-3,3), random(-3,3), 1);
-    squares[i] = new Square(random(width), random(height), random(-3, 3), random(-3,3), 1);
+    ships[i] = new Ship(random(width), random(height), random(-3,3), random(-3,3));
+    squares[i] = new Square(random(width), random(height), random(-3, 3), random(-3,3));
   }
-  repellor = new Ball(width/2, height/2, random(-0.5,0.5), random(-2,2), 0);
-  attractor = new Ball(width/2, height/2, random(-0.5,0.5), random(-2,2), 0);
+  repellor = new Boid(width/2, height/2);
+  attractor = new Boid(width/2, height/2);
 }
 function runObjects(){
   for(var i = 0; i < ships.length; i++){
