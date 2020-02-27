@@ -15,20 +15,10 @@ function setup(){
   drawGraph();
   loadStats();
   makePoints(player, 10, 4);
-  //add a UI so that the user can choose a player
-  //loadPlayerStats("Michael Jordan");
-  //console.log(statsArray[10]);
-  //console.log(aggregateStats("Michael Jordan", 10));
-  //console.log(aggregateStats("Michael Jordan", 4));
-  //loadPlayerStats("Kobe Bryant");
-  //console.log(aggregateStats("Kobe Bryant", 10));
-  //console.log(float(statsArray[season].get(10)));
 }
 
 //  The draw function is called @ 30 fps
 function draw(){
-  //createPlayerSelectionList();
-  //getSelectedPlayers();
   runPoints();
 }
 //draws the graph
@@ -76,17 +66,3 @@ function aggregateStats(player, stat){
   }
   return results;
 }
-//creates a UI that allows the user to select which player's stats they want to look at
-/*
-function createPlayerSelectionList(){
-  playerSel = createSelect(true);
-  playerSel.position((windowWidth-width)/2 + 270, (windowHeight-height)/2 + 40);
-}
-
-function getSelectedPlayers(){
-  var chosenPlayers = [];
-  for(var i = 0; i < playerSel.elt.selectedOptions.length; i++){
-    chosenPlayers.push(playerSel.elt.selectedOptions[i].value);
-  }
-}
-*/

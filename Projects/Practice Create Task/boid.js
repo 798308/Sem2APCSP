@@ -1,27 +1,27 @@
 //Austin Matel
-//8/21/19
+//2/25/20
 class Boid{
   constructor(x, y){
     this.loc = createVector(x, y);
   }
-
+  // This runs all of the Boid code
   run(){
     this.checkEdges();
     this.followMouse();
   }
-
+  // This makes sure that the boid doesn't follow the mous all over the screen
   checkEdges(){
     if (this.loc.x < 0){
-      this.vel.x = -(this.vel.x);
+      this.loc.x = 0;
     }
     if (this.loc.x > width){
-      this.vel.x = -(this.vel.x);
+      this.loc.x = 800;
     }
     if (this.loc.y < 0){
-      this.vel.y = -(this.vel.y);
+      this.loc.y = 0;
     }
     if (this.loc.y > height){
-        this.vel.y = -(this.vel.y);
+        this.loc.y = 800;
     }
   }
   followMouse(){
