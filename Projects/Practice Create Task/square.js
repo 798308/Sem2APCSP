@@ -4,7 +4,7 @@ class Square{
   constructor(x, y, dx, dy){
     this.loc = createVector(x, y);
     this.vel = createVector(dx, dy);
-    this.clr = color(int(random(225)), int(random(225)), int(random(225)));
+    this.clr = color(random(225), 0, 0);
     this.angle = 0;
     this.acc = createVector(0,0.1);
   }

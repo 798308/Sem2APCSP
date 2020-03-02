@@ -4,11 +4,11 @@ class Ship{
   constructor(x, y, dx, dy){
     this.loc = createVector(x, y);
     this.vel = createVector(dx, dy);
-    this.clr = color(int(random(225)), int(random(225)), int(random(225)));
+    this.clr = color(0, 0, random(225));
     this.angle = 0;
     this.acc = createVector(0,0.1);
   }
-  // runs all of the ship code
+  // Runs all of the ship code
 run(){
   this.checkEdges();
   this.update();
@@ -16,17 +16,17 @@ run(){
   this.makeLine();
   this.touchingMouse();
 }
-  //creates the lines between squares and triangles
+  // Creates the lines between squares and triangles
 makeLine(){
   for(var i = 0; i < squares.length; i++){
     if(this.loc.dist(squares[i].loc) < 75){
-      stroke(random(255), random(255), random(255), random(255));
-      line(this.loc.x, this.loc.y, squares[i].loc.x, squares[i].loc.y);
+      stroke(255,255,255);
+      line(this.loc.x, this.loc.y, squares[i].loc.x + 5, squares[i].loc.y + 5);
       noStroke();
     }
   }
 }
-  //makes the ship warp to the other side of the screen when it contacts the side
+  // Makes the ship warp to the other side of the screen when it contacts the side
 checkEdges(){
   if(this.loc.x < 0){
     this.loc.x = width;
@@ -41,7 +41,7 @@ checkEdges(){
       this.loc.y = 0;
   }
 }
-  //makes the ships attracted or repelled from the mouse and makes it move
+  // Makes the ships attracted or repelled from the mouse and makes it move
   update(){
   var disToAttractor;
   var disToRepellor;
@@ -61,7 +61,7 @@ checkEdges(){
   this.vel.add(this.acc);
   this.loc.add(this.vel);
   }
-    //this draws the ships and orients the ship to point towards the mouse
+    // This draws the ships and orients the ship to point towards the mouse
 render(){
   fill(this.clr);
   this.angle = this.vel.heading() + 360;

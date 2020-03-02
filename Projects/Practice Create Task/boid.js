@@ -24,6 +24,7 @@ class Boid{
         this.loc.y = 800;
     }
   }
+  // This makes the boid follow the mouse
   followMouse(){
     this.loc.x = mouseX;
     this.loc.y = mouseY;
