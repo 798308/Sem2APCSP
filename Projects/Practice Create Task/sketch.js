@@ -5,12 +5,13 @@
 //  Make sure to start with the mouse on the canvas, press control r to start
 var ships = [];
 var squares = [];
+var balls = [];
 var repellor,attractor;
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(5, 5, 5);
-  loadObjects(100);
+  loadObjects(50);
 }
 
 //  The draw function is called @  30 fps
@@ -23,6 +24,7 @@ function loadObjects(n){
   for (var i = 0; i < n; i++){
     ships[i] = new Ship(random(width), random(height), random(-3,3), random(-3,3));
     squares[i] = new Square(random(width), random(height), random(-3, 3), random(-3,3));
+    balls[i] = new Ball(random(width), random(height), random(-3, 3), random(-3,3));
   }
   repellor = new Boid(width/2, height/2);
   attractor = new Boid(width/2, height/2);
@@ -32,6 +34,7 @@ function runObjects(){
   for(var i = 0; i < ships.length; i++){
     ships[i].run();
     squares[i].run();
+    balls[i].run();
   }
   repellor.run();
   attractor.run();
