@@ -16,12 +16,17 @@ run(){
   this.makeLine();
   this.touchingMouse();
 }
-  // Creates the lines between squares and triangles
+  // Creates the lines between squares and triangles and circles
 makeLine(){
   for(var i = 0; i < squares.length; i++){
     if(this.loc.dist(squares[i].loc) < 75){
       stroke(255,255,255);
       line(this.loc.x, this.loc.y, squares[i].loc.x + 5, squares[i].loc.y + 5);
+      noStroke();
+    }
+    if(this.loc.dist(balls[i].loc) < 75){
+      stroke(255,255,255);
+      line(this.loc.x, this.loc.y, balls[i].loc.x + 5, balls[i].loc.y + 5);
       noStroke();
     }
   }

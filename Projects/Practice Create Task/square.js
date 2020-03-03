@@ -13,6 +13,17 @@ class Square{
     this.checkEdges();
     this.update();
     this.render();
+    this.makeLine();
+  }
+  // Creates the lines between squares and triangles and circles
+  makeLine(){
+    for(var i = 0; i < squares.length; i++){
+      if(this.loc.dist(balls[i].loc) < 75){
+        stroke(255,255,255);
+        line(this.loc.x, this.loc.y, balls[i].loc.x + 5, balls[i].loc.y + 5);
+        noStroke();
+      }
+    }
   }
   // This makse the squares warp to the other side of the screen when they contact the side of the canvas
   checkEdges(){
