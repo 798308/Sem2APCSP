@@ -23,6 +23,7 @@ function draw() {
     background(20,20,20, 20);//  back ground color
     paddle.run();
     mainBall.run();
+    removeBall();
     for(var i =0; i < balls.length; i++){
       balls[i].run();
     }
@@ -32,5 +33,11 @@ function loadBalls(numBalls){
   for(var i =0; i < numBalls; i++){
     balls[i] = new Ball(random(width),50, random(-3.0, 3.0), random(-3.0, 3.0), i);
   }
-
+}
+function removeBall(){
+  for (var i = balls.length - 1; i >= 0; i--){
+    if (balls[i].isColliding()){
+      balls.splice(i,1);
+    }
+  }
 }

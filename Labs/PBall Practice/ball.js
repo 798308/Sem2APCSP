@@ -26,6 +26,7 @@ class Ball{
 */
  run(){
    this.checkEdges();
+   this.isColliding();
  }
 
 
@@ -48,15 +49,6 @@ class Ball{
 
   update(){//++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     var distToMainBall;
-    if(this.id % 2 === 0 && this.loc.x > paddle.loc.x && this.loc.x < paddle.loc.x + paddle.w && this.loc.y > paddle.loc.y && this.loc.y < paddle.loc.y + paddle.h && this.vel.y > 0){//  if not mainBall
-      this.vel.y = -this.vel.y;
-    }
-    if(this.id % 2 === 1 && this.loc.x > paddle.loc.x && this.loc.x < paddle.loc.x + paddle.w && this.loc.y > paddle.loc.y && this.loc.y < paddle.loc.y + paddle.h && this.vel.y < 0){//  if not mainBall
-      this.vel.y = -this.vel.y;
-    }
-    if(this.id % 2 === 1 && this.loc.x > paddle.loc.x && this.loc.x < paddle.loc.x + paddle.w && this.loc.y > paddle.loc.y && this.loc.y < paddle.loc.y + paddle.h && this.vel.y < 0){//  if not mainBall
-      this.vel.y = -this.vel.y;
-    }
 
     this.vel.add(this.acc);
     this.vel.limit(5);
@@ -76,3 +68,14 @@ class Ball{
    ellipse(this.loc.x, this.loc.y, this.w, this.w);
  }//***************************************************************
 }//  end Ball class
+isColliding(){
+  if(this.id % 2 === 0 && this.loc.x > paddle.loc.x && this.loc.x < paddle.loc.x + paddle.w && this.loc.y > paddle.loc.y && this.loc.y < paddle.loc.y + paddle.h && this.vel.y > 0){//  if not mainBall
+    return true;
+  } else if(this.id % 2 === 1 && this.loc.x > paddle.loc.x && this.loc.x < paddle.loc.x + paddle.w && this.loc.y > paddle.loc.y && this.loc.y < paddle.loc.y + paddle.h && this.vel.y < 0){//  if not mainBall
+    return true;
+  } else if(this.id % 2 === 1 && this.loc.x > paddle.loc.x && this.loc.x < paddle.loc.x + paddle.w && this.loc.y > paddle.loc.y && this.loc.y < paddle.loc.y + paddle.h && this.vel.y < 0){//  if not mainBall
+    return true;
+  } else{
+    return false;
+  }
+}
