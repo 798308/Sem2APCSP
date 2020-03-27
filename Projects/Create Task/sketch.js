@@ -1,8 +1,8 @@
 //  Austin Matel
-// 	10/31/19
+// 	3/26/20
 //  This is a comment
 //  The setup function function is called once when your program begins
-var cubeWidth, food, direction, temp, button, clr, num;
+var cubeWidth, food, direction, temp, button, num, gameStart, lag;
 var time;
 var highscore = 0;
 var score = 0;
@@ -28,8 +28,8 @@ function setup() {
   loadAttackers();
 }
 function loadAttackers(){
-  for(var i = 0; i < attackerNum; i++ ){
-      attackers[i] = new Attacker(cubeWidth * int(random(0,800/cubeWidth)),cubeWidth * int(random(0,800/cubeWidth)));
+  for(var i = 0; i < attackerNum; i++){
+      attackers[i] = new Attacker(int(random(0,800)),int(random(0,800)), random(-8,8), random(-8,8));
   }
 }
 function runObjects(){//runs the snake and food
@@ -70,11 +70,9 @@ function startGame(){//displays start screen
   button.run();
 }
 function playGame(){//runs the game
-  time = int(millis()/1000);
+  time = int((millis() - gameStart)/1000);
+  console.log(time);
   background(5,5,5);
-  /*if(){
-    loadAttackers();
-  }*/
   runObjects();
   keyPressed();
   textSize(20);
@@ -99,8 +97,10 @@ function endGame(){//ends the game
     attackers = [];
     attackerNum = 1;
     loadAttackers();
+    gameStart = millis();
   }
   score = 0;
+  time = 0;
 }
 //  The draw function is called @ 30 fps
 function draw() {//pauses and ends game when snake dies
@@ -109,12 +109,25 @@ function draw() {//pauses and ends game when snake dies
   }
   if(gameState === 2){
     playGame();
-    clr = color(random(255), random(255), random(255));
-    if(time % 2 === 0){
-      num = int(random(1,4))
-    }
     if(time % 10 === 0){
+      push();
+      frameRate(1);
       attackerNum = attackerNum + 1;
+      loadAttackers();
+      pop();
+      /*lag = time;
+      console.log(lag);
+      for(var i = 0; i < attackerNum; i++){
+        attackers[i].vel.x = 0;
+        attackers[i].vel.y = 0;
+      }
+      if(time = lag + 50){
+        console.log(time);
+        for(var i = 0; i < attackerNum; i++){
+          attackers[i].vel.x = random(-8,8);
+          attackers[i].vel.y = random(-8,8);
+        }
+      }*/
     }
   }
   if(gameState === 3){

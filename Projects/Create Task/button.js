@@ -1,5 +1,5 @@
 //Austin Matel
-//8/21/19
+//3/26/20
 //creating parameters
 class Button{
   constructor(x, y, w, h, msg, clr){
@@ -25,7 +25,8 @@ class Button{
   //checks if the button is pressed and makes different buttons do different things
   isPressed(){
     if (mouseX > this.loc.x && mouseX < this.loc.x + this.w && mouseY > this.loc.y && mouseY < this.loc.y + this.h && mouseIsPressed){
-      gameState = 2
+      gameState = 2;
+      gameStart = millis();
     }
   }
 }
